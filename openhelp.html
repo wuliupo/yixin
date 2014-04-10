@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>帮助中心-易信开放平台</title>
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+<link rel="favicon" href="./favicon.ico" type="image/x-icon">
+<meta name="keywords" content="帮助中心,易信,开放平台"/>
+<meta name="description" content="易信 开放平台 帮助中心"/>
+<!--[if lt IE 9]>
+<script src="./js/html5.js"></script>
+<![endif]-->
+<script type="text/javascript">
+window.g_isLogin=false;
+cfg_root_css = './css';
+cfg_root_js = './js';
+cfg_open_root = '.';
+cfg_game_root = '.';
+cfg_resource_root = '.';
+cfg_login = './open.html';
+</script>
+<link type="text/css" rel="stylesheet" href="./css/base.css?v=04021717" />
+<link type="text/css" rel="stylesheet" href="./css/help.css?v=04021717" />
+</head>
+<body>
+<!-- 头 -->
+<div class="g-main m-open-topbar" id="J-openTopbar">
+<div class="topContent g-wraper960 f-clear">
+	<a href="./open.html"><h1>易信开放平台</h1></a>
+	<ul>
+		<li ><a href="./open.html" hidefocus="true">首页</a></li>
+		<li ><a href="./document.html" hidefocus="true">开发文档</a></li>
+		<li ><a href="./sdk.html" hidefocus="true">下载</a></li>
+		<li class="select"><a href="./openhelp.html" hidefocus="true">帮助中心</a></li>
+	</ul>
+	<div class="registration">还没易信帐号？<a class="login" href="./">安装注册</a></div>
+</div>
+</div>
+<div class="g-wraper960 f-clear f-mt30 m-help">
+<div class="g-content">
+	<h2 class="w-title2">帮助中心</h2>
+	<section class="m-help-info">
+		<h3>如何将您的内容分享到易信</h3>
+		<img style="margin-left: 52px;" title="如何将您的内容分享到易信" alt="如何将您的内容分享到易信"
+			 src="./images/help_info.png">
+		<ul class="f-clear f-mt20" style="text-align: center;">
+			<li>用户看到精彩内容</li>
+			<li>点击分享易信好友<br>或者是朋友圈</li>
+			<li>好友们看到消息</li>
+			<li>使用您的App来查看内容<br><span>(没有安装您的App的用户，<br>可以去提示下载安装哦)</span></li>
+		</ul>
+	</section>
+	<section class="m-help-info">
+		<h3><a name="successApps" class="f-tc3">成功案例</a></h3>
+		<ul class="f-clear">
+			<li style="width: 460px"><img src="./images/help_music.jpg" alt="网易云音乐分享到易信"/><br>
+				<em style="margin-left: 65px">网易云音乐分享到易信</em></li>
+			<li style="width: 365px"><img src="./images/help_news.jpg" alt="网易新闻分享到易信"/><br>
+				<em style="margin-left: 65px">网易新闻分享到易信</em></li>
+		</ul>
+	</section>
+	<section class="m-help-faq">
+		<h3>FAQ</h3>
+		<ol>
+			<li>
+				<dl>
+					<dt>Q：AppID审核的速度、流程</dt>
+					<dd>
+						A：三个工作日内完成审核。目前应用登记审核只审核开发者的资质和真实性，一般不涉及应用内容本身，
+						不需要开发者提交ipa文件或apk文件，也不需要将含易信SDK的版本在AppStore或android各市场发布后再提交审核，但要求开发者提供该应用已经上线的老版本APP的下载地址。
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：应用名称规范</dt>
+					<dd>
+						A：同一应用在不同平台的版本应公用同一个AppID，请不要在应用名称中出现平台相关字样（例如：XXX应用Android版）。
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：为什么在开放平台网站注册的已经审核通过的应用，进行资料修改之后未马上生效，而且在应用列表页面的状态变成了“完善资料中”？</dt>
+					<dd>A：审核通过的应用资料一旦发生修改即需要重新提交审核，并且等待审核通过才能正常使用。审核过程中，原来已审核通过的应用资料不能再使用，
+					分享时签名会显示未审核应用。
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：在注册的应用名已被注册，怎么办？</dt>
+					<dd>A：遇到此情况，请确认应用名输入无误以及您对该应用的所有权，仍有疑问，请发邮件到<a
+							href="mailto:yixinopen@188.com">yixinopen@188.com</a>进行申诉。
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：APP审核通过之后，在易信里为什么还是会显示“来自未审核应用”呢？</dt>
+					<dd>A：一般是本机缓存的问题，可以测试查看其他机器中的显示情况，本机删除易信和该应用后重新安装即可解决。</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：用户使用App发送链接给易信好友，点击该链接信息打开的页面如何知道接收方的手机中是否已安装App？</dt>
+					<dd>A：易信打开指定页面的时候，会在原链接后加上参数isappinstalled，即http://xxxx/?isappinstalled=[1|0]，1为已安装，0为未安装。</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：为什么使用易信SDK分享信息给易信好友，有的消息发送成功，有的消息发送失败（打不开易信）？</dt>
+					<dd>
+						A：这是因为SDK协议中对缩略图的大小作了限制，内存大小不能超过64K。另外限制的还有title、description等参数的大小。iOS开发者请在易信开放平台网站iOS手册搜索“thumbData”，
+						Android开发者请见易信开放平台网站Android手册的“YXMessage”页面。
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：分享内容到易信，对易信版本有什么要求？</dt>
+					<dd>A：易信android和iPhone版必须在v1.0以上才能正常显示他人分享的内容。</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：App如何知道用户的手机是否已安装易信？</dt>
+					<dd>A：可使用接口isYXAppInstalled，在易信开放平台网站手册搜索可知详情。</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：为什么使用易信iOS SDK分享信息给易信好友，发送成功后不能返回原App，并且在易信对话框中，没有显示“来自”哪个App？</dt>
+					<dd>A：让易信跳转回原App需要在原App中将AppID设置为URL Scheme。具体操作方法见易信开放平台 iOS上手指南 。</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：应用没有审核通过能不能进行调试？</dt>
+					<dd>
+						A：iOS应用和Android应用都可以进行调试，但是android 应用一定要填写正确的包名和签名，否则android 应用就不能调试。android 应用的签名可使用签名生成工具获取。
+						应用如果没有审核通过，则分享的信息来源一律显示“来自未审核应用”。
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>Q：为什么代码混淆之后，会导致无法弹出发送第三方消息的确认框？</dt>
+					<dd>
+						A：需要在混淆配置文件proguard.cfg中，增加如下两行代码:
+						<p>
+							-keep class im.yixin.sdk.api.YXMessage {*;}<br>
+							-keep class im.yixin.sdk.api.** implements im.yixin.sdk.api.YXMessage$YXMessageData{*;}
+						</p>
+					</dd>
+				</dl>
+			</li>
+		</ol>
+	</section>
+	<h5 class="f-ts14 f-tc3 f-mt40 f-tn f-yahei">更多问题，请关注易信开放平台公众号：</h5>
+	<a target="_blank" href="./images/open_center.png"><img alt="开放平台公共号二维码" class="f-mt10"
+																			   width="100"
+																			   src="./images/open_center.png"></a>
+</div>
+</div>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/jquery-ui.js"></script>
+<script type="text/javascript" src="./js/base.js?v=20131112"></script>
+
+
+<div class="g-open-footer " id="J-openFooter">
+	<div class="footer-wrap">
+		<p class="foo-links">
+			<a class="foo-item" href="http://yixin.im/" target="_blank">易信首页</a>
+			<a class="foo-item" href="http://yixin.im/about/" target="_blank">公司简介</a>
+			<a class="foo-item" href="http://yixin.im/service.html" target="_blank">服务条款</a>
+			<a class="foo-item" href="http://open.yixin.im/agreement" target="_blank">开发者协议</a>
+			<a class="foo-item" href="http://yixin.im/contact.html" target="_blank">联系我们</a>
+		</p>
+		<p class="foo-copyright">翼信公司 &copy; 浙ICP备13025399号</p>
+	</div>
+</div>
+</body>
+</html>

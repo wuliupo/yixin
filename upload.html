@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>上传 - 易信公众平台</title>
+	<style>
+    	html, body, form{margin: 0;padding: 0;overflow:hidden;border: 0 none;}
+    	.u-icn{display:inline-block;*display:inline;*zoom:1;width: 16px;height: 16px;vertical-align:middle;background:url(./images/icon.png) no-repeat 0 0;}
+    	.u-icn-upload{width:9px;height:13px;background-position: 0 -311px;}
+        .u-btn{position:relative;display:block;overflow:hidden;font:12px/32px arial,simsun;height:26px;line-height:26px;border-radius:2px;border:0;color:#fff;text-decoration:none;text-align:center;vertical-align:middle;cursor:pointer;background:#00b589;}
+        .u-btn::-moz-focus-inner{padding:0;margin:0;border:0;}
+        .u-btn .icn{margin:7px 6px 0 9px;}
+        .u-btn .wrap{position:absolute;top:0;left:0;width:100%;height:100%;}
+        .u-btn .wrap span{float:left;white-space:nowrap;}
+        .u-btn input[type=file]{position:absolute;top:-1px;right:-1px;font-size:100px;cursor:pointer;opacity:0;filter:alpha(opacity=0);}
+        .u-btn-txtonly{background:none;color:#2980b9;}
+        .u-btn-txtonly .icn{display:none;}
+	</style>
+</head>
+<body>
+	<form action="" method="POST" enctype="multipart/form-data" name="uploadForm" id="uploadForm" target="uploadFormTarget">
+	    <div id="button" class="u-btn" hidefocus="true"><span class="wrap" hidefocus="true"><span class="icn u-icn u-icn-upload"></span><span id="btnTxt" hidefocus="true"></span></span><input type="file" name="file" id="file" hidefocus="true"></div>
+		<input type="hidden" name="type" id="type">
+	</form>
+	<iframe name="uploadFormTarget" id="uploadFormTarget" style="display:none;"></iframe>
+	<script>
+		(function(window, document) {
+			var form, file, title, queryObj, code;
+			var actionWhiteList = ['/upload/register', 'upload', '/debug/cgi-bin/upload'];
+			/**
+			 * 页面初始化函数
+			 * @return {Void}
+			 */
+
+			function init() {
+				queryObj = queryToObject(location.search);
+				form = document.forms['uploadForm'];
+				file = form['file'];
+				form['type'].value = (parseInt(queryObj.type) || 0);
+				var btn = document.getElementById('btnTxt');
+				var btnTxt = queryObj.btnTxt || '上传文件';
+				if(btn.innerText !== undefined){
+					btn.innerText = btnTxt;
+				}else{
+					btn.textContent = btnTxt;
+				}
+				file.onchange = upload;
+				if(window.addEventListener){
+					window.addEventListener('offline', function(){
+						dispatchEvent({type: 'offline'});
+					});
+				}
+			}
+			/**
+			 * 判断对象是否为字符串型
+			 * @param  {Object}  obj 待判断对象
+			 * @return {Boolean}     是否为字符串
+			 */
+			function isString(obj){
+				return Object.prototype.toString.call(obj) === '[object String]';
+			}
+			/**
+			 * 将query 字符串转换成对象
+			 * @param  {String} query query字符串
+			 * @return {Object}       对象
+			 */
+
+			function queryToObject(query) {
+				if (!isString(query)) {
+					return;
+				}
+				if (query.indexOf('?') === 0) {
+					query = query.substr(1);
+				}
+				var result = {};
+				var arr = query.split('&');
+				var item, arr1;
+				for (var i = 0, length = arr.length, item; i < length; i++) {
+					item = arr[i];
+					arr1 = item.split('=');
+					if (arr1[0]) {
+						result[decodeURIComponent(arr1[0])] = decodeURIComponent(arr1[1]);
+					}
+				}
+				return result;
+			}
+			if (!Array.prototype.indexOf) {
+				Array.prototype.indexOf = function(obj) {
+					for (var i = 0, length = this.length; i < length; i++) {
+						if (obj === this[i]) {
+							return i;
+						}
+					}
+					return -1;
+				}
+			}
+			/**
+			 * 文件变化的响应函数
+			 * @return {Void}
+			 */
+
+			function upload() {
+				var event = {type: 'beforeupload'};
+				dispatchEvent(event);
+				if(event.stop){
+					resetForm();
+					return;
+				}
+				validateAsync(function(isValid) {
+					if (isValid) {
+						dispatchEvent({
+							type: 'uploading'
+						});
+						// 判断action是否合法
+						var action = queryObj && queryObj.action;
+						if(actionWhiteList.indexOf(action) === -1){
+							action = '/upload';
+						}
+						if(queryObj && queryObj.size){
+							action += '?size=' + parseSize(queryObj.size);
+							if (event.accessToken) {
+								action += '&access_token=' + event.accessToken;
+							}
+						}
+						form.setAttribute('action', action);
+						form.submit();
+					} else {
+						resetForm();
+						dispatchEvent({
+							type: 'validated',
+							data: {
+								code: code
+							}
+						});
+					}
+				});
+			}
+			/**
+			 * 判断对象是否是函数
+			 * @param  {Object}  obj 对象
+			 * @return {Boolean}     是否是函数
+			 */
+			function isFunction(obj){
+				return Object.prototype.toString.call(obj) === '[object Function]';
+			}
+			/**
+			 * 表单验证
+			 * @return {Void}
+			 */
+
+			function validateAsync(callback) {
+				if(!isFunction(callback)){
+					return;
+				}
+				var index = queryObj.type || 0
+				var fileName = file.value;
+				if (!fileName) {
+					code = 0;
+					return callback(false);
+				}
+				// 验证文件格式
+				var allowedExtension = queryObj.extension;
+				if (allowedExtension) {
+					var arr = fileName.match(/\.([^.]+)$/);
+					var extension = arr && arr[1];
+					extension = extension && extension.toLowerCase();
+					if (extension && (',' + queryObj.extension + ',').indexOf(',' + extension + ',') === -1) {
+						code = 1;
+						return callback(false);
+					}
+				}
+				// 验证文件大小/尺寸
+				var sizeStr = queryObj.size;
+				if(sizeStr && file.files){
+					// 验证文件大小
+					var limitedSize = parseSize(queryObj.size);
+					if(file.files && file.files[0].size > limitedSize){
+						code = 2;
+						return callback(false);
+					}
+				}
+				var dimensionStr = queryObj.dimension;
+				if(dimensionStr && dimensionStr.indexOf('*') !== -1 && window.FileReader && file.files){
+					// 验证尺寸
+					var arr = dimensionStr.split('*');
+					dimension = [parseInt(arr[0]), parseInt(arr[1])];
+					getImageDimensionAsync(file.files[0], function(width, height){
+						if(width > dimension[0] || height > dimension[1]){
+							code = 3;
+							return callback(false);
+						}else{
+							return callback(true);
+						}
+					});
+				}else{
+					return callback(true);
+				}
+			}
+			/**
+			 * 获取图片文件的尺寸
+			 * @param  {Object} file 文件对象
+			 * @param  {Function}	callback	回调函数
+			 * @return {Void}
+			 */
+			function getImageDimensionAsync(file, callback){
+				if(!file || !callback || !FileReader){
+					return;
+				}
+				var reader = new FileReader();
+				reader.onload = function(event){
+					var image = new Image();
+					image.onload = function(){
+						callback(this.width, this.height);
+					};
+					image.src = event.target.result;
+				}
+				reader.readAsDataURL(file);
+			}
+			/**
+			 * 将文件大小字符串转换为数值
+			 * @param  {String} sizeStr 文件大小字符串
+			 * @return {Number}         文件大小
+			 */
+			function parseSize(sizeStr){
+				if(!isString(sizeStr) || sizeStr.length === 0){
+					return;
+				}
+				var units = ['B', 'K', 'M', 'G', 'T'];
+				var value = parseFloat(sizeStr);
+				var unit = sizeStr.slice(-1);
+				unit = unit.toUpperCase();
+				if(units.join('').indexOf(unit) === -1){
+					unit = 'B';
+				}
+				for (var i = 0; x = units[i]; i++) {
+					if(unit === x){
+						break;
+					}
+					value *= 1024;
+				}
+				return value;
+			}
+			/**
+			 * 发布消息
+			 * @param  {Object} event 事件对象
+			 */
+
+			function dispatchEvent(event) {
+				var listenerName = queryObj.listener;
+				if(listenerName && listenerName in window) return;
+				var listener = parent && parent[queryObj.listener];
+				if (isFunction(listener)) {
+					return listener.apply(parent, Array.prototype.slice.call(arguments));
+				}
+			}
+			/**
+			 * 上传回调函数
+			 * @param  {Number} code   返回码
+			 * @param  {Object} result 上传结果
+			 * @return {Void}
+			 */
+
+			function onUpload(code, result) {
+				resetForm();
+				if(result && queryObj.retry==true){
+				    var button = document.getElementById('button');
+				    if((' '+button.className+' ').indexOf(' u-btn-txtonly ') == -1){
+				        button.className += ' u-btn-txtonly';
+				    }
+				    var btnTxt = document.getElementById('btnTxt');
+				    if(btnTxt.innerText !== undefined){
+                        btnTxt.innerText = '【重新上传】';
+                    }else{
+                        btnTxt.textContent = '【重新上传】';
+                    }
+				}
+				dispatchEvent({
+					type: 'uploaded',
+					data: {
+						code: code,
+						result: result
+					}
+				});
+			}
+			/**
+			 * 重置表单
+			 * @return {Void}
+			 */
+			function resetForm(){
+				form.reset();
+				form['type'].value = (parseInt(queryObj.type) || 0);
+			}
+			window.ucb = onUpload;
+			init();
+		})(window, document);
+	</script>
+</body>
+</html>

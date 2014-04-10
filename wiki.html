@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" /><title>易信公众平台开发者文档</title>
+<meta name="generator" content="MediaWiki 1.22.0" />
+<link rel="shortcut icon" href="./favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/wiki/qa/opensearch_desc.php" title="易信公众平台开发者文档 (zh-cn)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://dev.yixin.im/wiki/qa/api.php?action=rsd" />
+<link rel="alternate" type="application/atom+xml" title="易信公众平台开发者文档的Atom feed" href="/wiki/qa/index.php?title=%E7%89%B9%E6%AE%8A:%E6%9C%80%E8%BF%91%E6%9B%B4%E6%94%B9&amp;feed=atom" />
+<link rel="stylesheet" href="./css/wiki.css?303" media="screen" />
+<link rel="stylesheet" href="./css/load.css?303" media="screen" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<style>a:lang(ar),a:lang(ckb),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: yx_wiki-yx_:resourceloader:filter:minify-css:7:3cab09e37c65f1f9cf1538fd90ed599f */</style>
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-首页 skin-vector action-view vector-animateLayout">
+<div class="g-hd g-hd-1">
+  <div class="g-top">
+    <div class="g-topc f-cb">
+      <div class="m-logo">
+          <a href="./plus.html">易信|公众帐号平台<em>beta</em></a>
+      </div>
+      <div class="m-search">
+      	<div class="u-search"></div>
+      	<form action="#" id="searchform">
+			<div class='u-search'>
+				<input name="search" placeholder="搜索易信公众平台API" title="搜索易信公众平台API文档 [alt-shift-f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off">						
+				<button type="submit" class='u-btn btn' name="button" title="搜索含这些文字的页面" id="searchButton">
+				<img src="./images/search-ltr.png?303" alt="搜索" width="12" height="13"></button>								
+				<input type="hidden" name="title" value="特殊:搜索">
+		</div>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="g-bd2">
+  <div class="m-hd f-cb">
+    <h1>
+       <a href="/qa/index.php">API文档</a>
+       <span class="sep">&gt;</span>
+      </h1>
+  </div>
+</div>
+ -->
+<div class="g-bd">
+		<div class="g-sd">
+			<h2 class="m-header">API文档</h2>
+			<div class="m-nav">
+					<div class="portal " role="navigation">
+						<h3><a class='j-touch'>基础支持<span class="u-arrow">&gt;</span></a></h3>
+						<ul >
+								<li class="">
+								<a href="/wiki/qa/index.php?title=新手接入 ">·
+							新手接入</a></li>
+								<li class="">
+								<a href="/wiki/qa/index.php?title=全局返回码说明 ">·
+							全局返回码说明</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=接口使用限制说明 ">·
+							接口使用限制说明</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=获取凭证 ">·
+							获取凭证</a></li>
+											</ul>
+					</div>
+									<div class="portal " role="navigation">
+						<h3><a class='j-touch'>接收消息<span class="u-arrow">&gt;</span></a></h3>
+						<ul >
+												<li class="">
+								<a href="/wiki/qa/index.php?title=接收普通消息 ">·
+							接收普通消息</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=接收事件消息 ">·
+							接收事件消息</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=获取地理位置信息 ">·
+							获取地理位置信息</a></li>
+											</ul>
+					</div>
+									<div class="portal " role="navigation">
+						<h3><a class='j-touch'>平台支持<span class="u-arrow">&gt;</span></a></h3>
+						<ul >
+												<li class="">
+								<a href="/wiki/qa/index.php?title=管理素材库 ">·
+							管理素材库</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=生成推广二维码 ">·
+							生成推广二维码</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=自动回复与开发者模式并存 ">·
+							自动回复与开发者模式并存</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=OAuth2.0认证文档 ">·
+							OAuth2.0认证文档</a></li>
+											</ul>
+					</div>
+									<div class="portal " role="navigation">
+						<h3><a class='j-touch'>发送消息<span class="u-arrow">&gt;</span></a></h3>
+						<ul >
+												<li class="">
+								<a href="/wiki/qa/index.php?title=自动回复消息 ">·
+							自动回复消息</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=发送客服消息 ">·
+							发送客服消息</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=群发消息 ">·
+							群发消息</a></li>
+											</ul>
+					</div>
+									<div class="portal " role="navigation">
+						<h3><a class='j-touch'>用户管理<span class="u-arrow">&gt;</span></a></h3>
+						<ul >
+												<li class="">
+								<a href="/wiki/qa/index.php?title=管理用户分组 ">·
+							管理用户分组</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=获取用户基本信息 ">·
+							获取用户基本信息</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=获取关注用户列表 ">·
+							获取关注用户列表</a></li>
+											</ul>
+					</div>
+									<div class="portal " role="navigation">
+						<h3><a class='j-touch'>自定义菜单<span class="u-arrow">&gt;</span></a></h3>
+						<ul >
+												<li class="">
+								<a href="/wiki/qa/index.php?title=管理自定义菜单 ">·
+							管理自定义菜单</a></li>
+											</ul>
+					</div>
+									<div class="portal " role="navigation">
+						<h3><a class='j-touch'>webview的JS管理<span class="u-arrow">&gt;</span></a></h3>
+						<ul >
+												<li class="">
+								<a href="/wiki/qa/index.php?title=隐藏webview底栏 ">·
+							隐藏webview底栏</a></li>
+												<li class="">
+								<a href="/wiki/qa/index.php?title=获取用户网络状态 ">·
+							获取用户网络状态</a></li>
+											</ul>
+					</div>
+									<div class="portal " role="navigation">
+						<h3><a class='j-touch'>开发者帮助<span class="u-arrow">&gt;</span></a></h3>
+						<ul >
+												<li class="">
+								<a href="http://dev.yixin.im ">·
+							开发者社区</a></li>
+												<li class="">
+								<a href="http://dev.yixin.im/?q=%E6%B5%8B%E8%AF%95%E5%85%AC%E4%BC%97%E5%8F%B7 ">·
+							测试公众号</a></li>
+												<li class="">
+								<a href="http://dev.yixin.im/?q=认证接口申请 ">·
+							认证接口申请</a></li>
+											</ul>
+					</div>
+							</div>
+		</div>
+		<div class="g-mn">
+			<div class="g-mnc">
+				<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<div id="bodyContent">
+				<h1>首页</h1>				<div id="contentSub"></div>
+												<div id="mw-content-text" lang="zh-CN" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id=".E6.AC.A2.E8.BF.8E.E6.9D.A5.E5.88.B0.E6.98.93.E4.BF.A1.E5.85.AC.E4.BC.97.E5.B9.B3.E5.8F.B0.E5.BC.80.E5.8F.91.E8.80.85.E6.96.87.E6.A1.A3">欢迎来到易信公众平台开发者文档</span></h2>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.008 seconds
+Real time usage: 0.009 seconds
+Preprocessor visited node count: 2/1000000
+Preprocessor generated node count: 8/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key yx_wiki-yx_:pcache:idhash:1-0!*!*!*!*!*!* and timestamp 20140410090900
+ -->
+</div>								<div class="printfooter">
+				取自“<a href="http://dev.yixin.im/wiki/qa/index.php?title=首页&amp;oldid=313">http://dev.yixin.im/wiki/qa/index.php?title=首页&amp;oldid=313</a>”				</div>
+												<div id='catlinks' class='catlinks catlinks-allhidden'></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+			</div>
+		</div>
+		
+	</div>
+<!-- Served in 0.270 secs. -->		<div class="g-ft">
+    	<div class="m-ft">Copyright&nbsp;&copy;&nbsp;2013-2014&nbsp;&nbsp;Yixin. All Rights Reserved</div>
+		</div>
+	</body>
+</html>

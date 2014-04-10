@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>登录 - 易信公众帐号平台</title>
+<link href="./css/core.css?c02a1e1e6342387c17504e75869d81b3" type="text/css" rel="stylesheet" />
+<link href="./css/plus.css?c02a1e1e6342387c17504e75869d81b3" type="text/css" rel="stylesheet" />
+<link rel="shortcut icon" href="./favicon.ico" />
+</head>
+<body>
+<div class="g-hd">
+	<div class="g-top">
+		<div class="g-topc f-cb">
+			<div class="m-logo">
+				<a href="./plus.html" hidefocus="true">易信|公众平台 <em>beta</em></a>
+			</div>
+			<a class="nav-link" href="./">易信首页</a>
+			<a class="nav-link" href="./wiki.html">公众平台Wiki</a>
+			<a class="nav-link" href="./qa.html">公众平台QA</a>
+			<div class="m-account">
+				<span class="reg">还没公众帐号？<a href="./register.html">立即注册</a></span>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="n-login">
+	<div class="wrap">
+		<div class="form">
+			<form action="/login" method="post" name="loginForm" id="login-form" target="_self">
+				<div class="formwrap">
+					<div class="message" id="message">
+						<div class="msgwrap">
+							<div class="msgwrapc">
+								<span id="msgcnt" class="msgcnt"></span>
+								<span class="arr">◆</span>
+							</div>
+						</div>
+					</div>
+					<h1>登录&nbsp;公众平台</h1>
+					<div class="ipt">
+						<input class="account" id="account" name="loginForm-account" type="text" autocomplete="off" tabindex="1" placeholder="请输入邮箱 / 易信号" data-holder="z-placeholder" />
+					</div>
+					<div class="ipt ipt-pwd">
+						<input class="pwd" id="password" name="loginForm-pwd" type="password" autocomplete="off" tabindex="2" placeholder="请输入密码" data-holder="z-placeholder" />
+					</div>
+					<div class="captchawrap" id="captcha-wrap">
+						<div class="ipt ipt-captcha f-cb">
+							<input class="u-ipt u-ipt-1" type="text" name="captcha" id="captcha" placeholder="请输入验证码" tabindex="3">
+							<img src="./images/captcha.jpg" id="captcha-img">
+							<a href="javascript:;" id="captcha-update" class="s-fc5">换一张</a>
+						</div>
+					</div>
+					<div class="btns f-cb">
+						<button id="submit-button" type="submit" class="submit u-btn" tabindex="4">登&nbsp;录</button>
+						<a href="./register.html" class="reg u-btn u-btn-c1">注&nbsp;册</a>
+					</div>
+					<div class="ext f-cb">
+						<label><input id="remember" name="loginForm-remember" type="checkbox" autoComplete="off" /> 记住帐号</label>
+						<span class="link"><a href="./retrievePassword.html">忘记密码？</a></span>
+					</div>
+					<input id="passwordToMD5" type="hidden" />
+					<input id="account-type" name="loginForm-accountType" type="hidden" value="YiXinUserId" />
+				</div>
+			</form>
+		</div>
+		<i class="icon icon-1"></i>
+		<i class="icon icon-2"></i>
+		<i class="icon icon-3"></i>
+		<i class="icon icon-4"></i>
+		<i class="icon icon-5"></i>
+		<i class="icon icon-6"></i>
+		<div class="phone"><span class="zoom"></span></div>
+	</div>
+</div>
+<div class="n-usage">
+	<ul class="f-cb">
+		<li class="i1">
+			<h2>客服服务</h2>
+			<p>易信向用户提供免费即时通讯服务，帮助企业建立维护用户关系。</p>
+		</li>
+		<li class="i2">
+			<h2>工具助手</h2>
+			<p>易信开放接口，支持更多开发者向用户提供更加丰富的实用工具。</p>
+		</li>
+		<li class="i3">
+			<h2>内部分享</h2>
+			<p>易信提供关注验证权限,更好的向企业组织提供内部分享交流服务。</p>
+		</li>
+		<li class="i4">
+			<h2>媒体资讯</h2>
+			<p>品牌、个人、媒体，通过易信与粉丝互动，向大家传递更多资讯信息。</p>
+		</li>
+	</ul>
+</div>
+<!--a href="http://app.plus.yixin.im " target="_blank" title="点击查看易信·应用平台"
+class="m-ad"> <div class="u-tip"> <p>易信公众平台·应用平台</p> <div>聚合优质的开发商  提供丰富的公众号模板</div> </div> <div class="f-cb"> <div class="m-big" id="big"> <img id="img0" class="u-img0" src="/res/image/ad/2-img-yhq.png" /> <img id="img1" class="u-img1" src="/res/image/ad/3-img-hr.png" /> <img id="img2" class="u-img2" src="/res/image/ad/4-img-hyk.png" /> <img id="img3" class="u-img3" src="/res/image/ad/5-img-sc.png" /> <div class="m-small" id="small"> <div class="u-rec0" id="u0"></div> <div class="u-rec1" id="u1"></div> <div class="u-rec2" id="u2"></div> </div> </div> </div> </a-->
+<div class="g-ft">
+	<div class="m-ft">
+		<p class="link">
+			<a href="./">易信首页</a>
+			<i> | </i>
+			<a href="./pubservice.html">服务协议</a>
+			<i> | </i>
+			<a href="mailto:yixinplus@188.com">联系我们</a>
+		</p>
+		<p class="rights">Copyright&nbsp;&copy;&nbsp;2013-2014&nbsp;&nbsp;Yixin. All Rights Reserved</p>
+	</div>
+</div>
+<span class="u-gotop" id="gotop-btn" title="回到顶部">
+</span>
+<script src="./js/gotop.js" type="text/javascript"></script>
+<script src="./js/core.js?1d1cf4335fdc024a1bbbb3c0597c4ce0" type="text/javascript"></script>
+<script src="./js/pt_login.js?409940938f3fd03d98d1f6e252947a58" type="text/javascript"></script>
+</body>
+</html>
